@@ -10,7 +10,8 @@ include () {
     [[ -s "$1" ]] && source "$1" || echo "$1 not loaded"
 }
 
-for zshrc_snipplet in ~/.zsh/rc/S[0-9][0-9]*[^~] ; do
+set -G
+for zshrc_snipplet in ~/.zsh/rc/*; do
     source $zshrc_snipplet
 done
 

@@ -19,8 +19,8 @@ install:
 	$(USR_ANTIBODY) bundle Vifon/deer >> $(ANTIBODY_STATIC_BUNDLES)
 	$(USR_ANTIBODY) bundle zsh-users/zsh-syntax-highlighting >> $(ANTIBODY_STATIC_BUNDLES)
 	$(USR_ANTIBODY) update
-	ln -sinv $(DOT_FOLDER)/vim ~/.vim/
-	ln -sinv $(DOT_FOLDER)/zsh ~/.zsh/
+	ln -sinv $(DOT_FOLDER)/vim ~/.vim
+	ln -sinv $(DOT_FOLDER)/zsh ~/.zsh
 	ln -sinv $(DOT_FOLDER)/dot/gitconfig ~/.gitconfig
 	ln -sinv $(DOT_FOLDER)/dot/githelpers ~/.githelpers
 	ln -sinv $(DOT_FOLDER)/dot/ideavimrc ~/.ideavimrc
@@ -31,3 +31,4 @@ install:
 	ln -sinv $(DOT_FOLDER)/dot/zprofile ~/.zprofile
 	ln -sinv $(DOT_FOLDER)/dot/zshenv ~/.zshenv
 	ln -sinv $(DOT_FOLDER)/dot/zshrc ~/.zshrc
+	vim -c :PlugInstall
