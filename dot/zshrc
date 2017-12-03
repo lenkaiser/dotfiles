@@ -14,5 +14,3 @@ set -G
 for zshrc_snipplet in ~/.zsh/rc/*; do
     source $zshrc_snipplet
 done
-
-export PATH="$PATH:$HOME/.rvm/bin"
