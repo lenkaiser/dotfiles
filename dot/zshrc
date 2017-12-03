@@ -1,0 +1,17 @@
+export DOTFILES="$HOME/.dotfiles"
+export ZDOTDIR="$HOME"
+export ZSH="$HOME"
+export PROJECTS="$HOME/Documents/Projects"
+
+source <(antibody init)
+source ~/.antibody_bundles.zsh
+
+include () {
+    [[ -s "$1" ]] && source "$1" || echo "$1 not loaded"
+}
+
+for zshrc_snipplet in ~/.zsh/rc/S[0-9][0-9]*[^~] ; do
+    source $zshrc_snipplet
+done
+
+export PATH="$PATH:$HOME/.rvm/bin"

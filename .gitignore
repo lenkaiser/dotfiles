@@ -1,0 +1,5 @@
+.vscode
+.history
+zsh/cache
+vim/autoload
+vim/plugged

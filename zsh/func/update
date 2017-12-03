@@ -1,0 +1,12 @@
+#autoload -U
+#vim: set ft=zsh
+#
+
+function _update() {
+    softwareupdate -d -a
+    brew update
+    brew upgrade
+    brew cu -a -y
+    gem update
+    npm up -g
+}
