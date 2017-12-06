@@ -1,4 +1,4 @@
-source ~/.vim/settings.vim
+source ~/.vim/init.vim
 
 map <F9> :action FileStructurePopup<CR>
 map <Leader>f :action RecentFiles<CR>

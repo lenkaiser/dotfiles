@@ -1,16 +1,59 @@
-export DOTFILES="$HOME/.dotfiles"
-export ZDOTDIR="$HOME"
-export ZSH="$HOME"
+# My project folder
 export PROJECTS="$HOME/Documents/Projects"
+export ZGEN_PLUGIN_UPDATE_DAYS=1
+export ZGEN_RESET_ON_CHANGE=($HOME/.zshrc)
 
-source <(antibody init)
-source ~/.antibody_bundles.zsh
+# load zgen
+source "$HOME/.zgen/zgen.zsh"
 
-include () {
+if ! zgen saved; then
+    zgen prezto
+
+    # prezto options
+    zgen prezto editor key-bindings 'vi'
+    zgen prezto prompt theme 'pure'
+
+    # custom
+    zgen load wbinglee/zsh-wakatime
+    zgen load b4b4r07/enhancd
+    zgen load RobSis/zsh-completion-generator
+    zgen load MichaelAquilina/zsh-you-should-use
+    zgen load zsh-users/zsh-autosuggestions
+    zgen load Tarrasch/zsh-bd
+
+    # prezto and modules
+    zgen prezto git
+    zgen prezto command-not-found
+    zgen prezto syntax-highlighting
+    zgen prezto completion
+    zgen prezto directory
+    zgen prezto environment
+    zgen prezto history
+    zgen prezto history-substring-search
+    zgen prezto osx
+    zgen prezto ruby
+    zgen prezto utility
+
+    zgen load unixorn/autoupdate-zgen
+
+    # generate the init script from plugins above
+    zgen save
+fi
+
+# Function for safe sourcing of files
+function include {
     [[ -s "$1" ]] && source "$1" || echo "$1 not loaded"
 }
 
-set -G
-for zshrc_snipplet in ~/.zsh/rc/*; do
-    source $zshrc_snipplet
-done
+include $HOME/.iterm2_shell_integration.zsh
+include $HOME/.syntra/small
+include $HOME/.fzf.zsh
+include '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' >/dev/null
+include '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' >/dev/null
+include /usr/local/opt/chruby/share/chruby/chruby.sh
+
+# Load custom functions
+source "$HOME/.zsh/functions.zsh"
+
+# Load custom aliases
+source "$HOME/.zsh/aliases.zsh"
