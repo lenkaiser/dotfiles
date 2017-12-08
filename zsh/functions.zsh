@@ -44,6 +44,7 @@ function _clean {
 # Update the system
 function _update {
     softwareupdate -d -a
+    mas upgrade
     brew update
     brew upgrade
     brew cu -a -y

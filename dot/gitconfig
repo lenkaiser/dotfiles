@@ -9,6 +9,7 @@
     algorithm = patience
 [core]
     editor = /usr/local/bin/vim
+	autocrlf = input
 [push]
     default = simple
 [merge]

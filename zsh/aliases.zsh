@@ -70,14 +70,15 @@ else
   fi
 fi
 
-# Safe ops. Ask the user before doing anything destructive.
-alias rmi="${aliases[rm]:-rm} -i"
-alias mvi="${aliases[mv]:-mv} -i"
-alias cpi="${aliases[cp]:-cp} -i"
-alias lni="${aliases[ln]:-ln} -i"
-if zstyle -T ':prezto:module:utility' safe-ops; then
-  alias rm='rmi'
-  alias mv='mvi'
-  alias cp='cpi'
-  alias ln='lni'
-fi
+alias rmi='rm -i'
+alias cask="brew cask"
+
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+alias v='f -t -e vim -b viminfo'

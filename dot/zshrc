@@ -1,3 +1,6 @@
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby ruby-2.4.2
 # My project folder
 export PROJECTS="$HOME/Documents/Projects"
 export ZGEN_PLUGIN_UPDATE_DAYS=1
@@ -32,9 +35,10 @@ if ! zgen saved; then
     zgen prezto history-substring-search
     zgen prezto osx
     zgen prezto ruby
+    zgen prezto fasd
     zgen prezto utility
 
-    zgen load unixorn/autoupdate-zgen
+    # zgen load unixorn/autoupdate-zgen
 
     # generate the init script from plugins above
     zgen save
@@ -46,11 +50,7 @@ function include {
 }
 
 include $HOME/.iterm2_shell_integration.zsh
-include $HOME/.syntra/small
 include $HOME/.fzf.zsh
-include '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' >/dev/null
-include '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' >/dev/null
-include /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Load custom functions
 source "$HOME/.zsh/functions.zsh"
