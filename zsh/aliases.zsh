@@ -12,37 +12,27 @@ if which exa >/dev/null 2>&1; then
 fi
 
 alias man="mand"
-alias reload=". $HOME/.zshrc"
+# alias reload=". $HOME/.zshrc"
+alias reload="exec $SHELL"
 
 alias killaudio='sudo killall -m -9 coreaudio'
 alias atom=atom-beta
 alias pip=pip2
-alias v=vim
-alias vi=vim
 alias cat=ccat
-alias top="vtop"
-alias oldtop="/usr/bin/top"
+alias top="htop"
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias _='sudo'
-alias b='${(z)BROWSER}'
 
 alias diffu="diff --unified"
-alias e='${(z)VISUAL:-${(z)EDITOR}}'
 alias mkdir="${aliases[mkdir]:-mkdir} -p"
-alias p='${(z)PAGER}'
 alias po='popd'
 alias pu='pushd'
 alias sa='alias | grep -i'
 alias type='type -a'
 
-if [[ "$OSTYPE" == (darwin*|*bsd*) ]]; then
-  alias topc='top -o cpu'
-  alias topm='top -o vsize'
-else
-  alias topc='top -o %CPU'
-  alias topm='top -o %MEM'
-fi
+alias topc='htop --sort-key=PERCENT_CPU'
+alias topm='htop --sort-key=PERCENT_MEM'
 
 # File Download
 if (( $+commands[curl] )); then
@@ -51,34 +41,23 @@ elif (( $+commands[wget] )); then
   alias get='wget --continue --progress=bar --timestamping'
 fi
 
-# Mac OS X Everywhere
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias o='open'
-elif [[ "$OSTYPE" == cygwin* ]]; then
-  alias o='cygstart'
-  alias pbcopy='tee > /dev/clipboard'
-  alias pbpaste='cat /dev/clipboard'
-else
-  alias o='xdg-open'
+alias o='open'
 
-  if (( $+commands[xclip] )); then
-    alias pbcopy='xclip -selection clipboard -in'
-    alias pbpaste='xclip -selection clipboard -out'
-  elif (( $+commands[xsel] )); then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-  fi
-fi
-
-alias rmi='rm -i'
-alias cask="brew cask"
+# alias rmi='rm -i'
 
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
+# alias f='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-alias v='f -t -e vim -b viminfo'
+# alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+# alias zz='fasd_cd -d -i' # cd with interactive selection
+# alias v='f -t -e vim'
+alias f='fzf'
+
+alias bs='brew search'
+alias bi='brew install'
+
+# alias l='k -Ah --si'
+alias ks='k -Ah --si'

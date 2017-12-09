@@ -57,10 +57,10 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 " inoremap <ESC> <nop>
 
 noremap ; :
@@ -74,7 +74,7 @@ nnoremap <C-l> <C-w>l
 nmap <silent> <leader>/ :nohlsearch<CR>
 inoremap jk <esc>
 inoremap jj <esc>
-inoremap jj <esc>
+inoremap kk <esc>
 
 nmap H 0
 vmap H 0

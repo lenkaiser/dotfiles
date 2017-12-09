@@ -1,52 +1,92 @@
-source ~/.vim/init.vim
+scriptencoding utf-8
+" source ~/.vim/init.vim
+" source ~/.vim/mapping.vim
 
-map <F9> :action FileStructurePopup<CR>
-map <Leader>f :action RecentFiles<CR>
-map <Leader>g :action AceLineAction<CR>
-map F :action AceTargetAction<CR>
-map f :action AceAction<CR>
-nmap <S-j> :action PreviousTab<cr>
-nmap <S-k> :action NextTab<cr>
-nnoremap ,C :action RecentChanges<CR>
-nnoremap ,E :action RecentChangedFiles<CR>
-nnoremap ,F :action ShowFilePath<CR>
-nnoremap ,S :action ShowSiblings<CR>
-nnoremap ,T :action GotoTypeDeclaration<CR>
-nnoremap ,a :action GotoAction<CR>
-nnoremap ,c :action GotoClass<CR>
-nnoremap ,e :action RecentFiles<CR>
-nnoremap ,f :action GotoFile<CR>
-nnoremap ,h :action ShowNavBar<CR>
-nnoremap ,i :action GotoImplementation<CR>
-nnoremap ,o :action FileStructurePopup<CR>
-nnoremap ,r :action GotoRelated<CR>
-nnoremap ,s :action GotoSymbol<CR>
-nnoremap ,t :action GotoTest<CR>
-nnoremap ,u :action GotoSuperMethod<CR>
-nnoremap ,v :action Vcs.QuickListPopupAction<CR>
-nnoremap ;R :action Refactorings.QuickListPopupAction<CR>
-nnoremap ;c :action IntroduceConstant<CR>i
-nnoremap ;d :action SafeDelete<CR>i
-nnoremap ;f :action IntroduceField<CR>i
-nnoremap ;i :action Inline<CR>i
-nnoremap ;m :action ExtractMethod<CR>i
-nnoremap ;p :action IntroduceParameter<CR>i
-nnoremap ;r :action RenameElement<CR>i
-nnoremap ;v :action IntroduceVariable<CR>i
-nnoremap <C-P> :action SearchEverywhere<CR>
-nnoremap <C-i> :action Forward<CR>
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-p> :action GotoFile<cr>
-nnoremap <Leader>O :action GotoClass<CR>
-nnoremap <Leader>T :action Refactorings.QuickListPopupAction<CR>
-nnoremap <Leader>a :action GotoRelated<CR>
-nnoremap <Leader>o :action GotoFile<CR>
-nnoremap <Leader>r :action RenameElement<CR>
-nnoremap <Leader>rf :action RenameFile<CR>
-nnoremap <Leader>se :action SearchEverywhere<CR>
-nnoremap <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
-nnoremap <Leader>vs :source ~/.ideavimrc<CR>
-nnoremap <Leader>w :action AceJumpAction<CR>
-nnoremap \r :action Run<cr>
-nnoremap gcc :action CommentByLineComment<CR>
-vnoremap <Leader>tl y<CR>:action ActivateTerminalToolWindow<CR>
+" let mapleader=<Space>
+
+set surround
+" set keep-english-in-normal
+set clipboard=unnamed " 'cb'    clipboard options
+" set digraph         " 'dg'    enable the entering of digraphs in Insert mode
+" set gdefault        " 'gd'    the ":substitute" flag 'g' is default on
+set history=1000    " 'hi'    number of command-lines that are remembered
+set hlsearch        " 'hls'   highlight matches with last search pattern
+set igcase      " 'ic'    ignore case in search patterns
+set iskeyword       " 'isk'   defines keywords for commands like 'w', '*', etc.
+set incsearch       " 'is'    show where search pattern typed so far matches
+set matchpairs      " 'mps'   pairs of characters that "%" can match
+" set nrformats       " 'nf'    number formats recognized for CTRL-A command
+" set number          " 'nu'    print the line number in front of each line
+set relativenumber  " 'rnu'   show the line number relative to the line with
+                         " the cursor
+" set scroll          " 'scr'   lines to scroll with CTRL-U and CTRL-D
+" set scrolljump 1    " 'sj'    minimum number of lines to scroll
+set scrolloff=10   " 'so'    minimum nr. of lines above and below cursor
+" set selection       " 'sel'   what type of selection to use
+set showmode        " 'smd'   message    status line to show current mode
+" set sidescroll      " 'ss'    minimum number of columns to scroll horizontal
+" set sidescrolloff   " 'siso'  min. nr. of columns to left and right of cursor
+set smartcase       " 'scs'   no ig case when pattern has uppercase
+set timeout         " 'to'    use timeout for mapped key sequences
+set timeoutlen=1000 " 'tm'    time that is waited for a mapped key sequence
+" set undolevels      " 'ul'    maximum number of changes that can be undone
+set viminfo='50,<1000,s100,:100,n~/.viminfo         " 'vi'
+                                " information to remember after restart
+set visualbell      " 'vb'    use visual bell instead of beeping
+set wrapscan        " 'ws'    searches wrap around the end of the file
+
+noremap ; :
+nmap <Leader>vs :source ~/.ideavimrc<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
+inoremap jk <esc>
+inoremap jj <esc>
+inoremap kk <esc>
+
+nmap H 0
+vmap H 0
+nmap L $
+vmap L $
+
+map gf :action AceAction<CR>
+map gw :action AceJumpAction<CR>
+map gG :action AceLineAction<CR>
+map gF :action AceTargetAction<CR>
+
+" map <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
+" vmap <Leader>tl y<CR>:action ActivateTerminalToolWindow<CR>
+
+map <S-j> :action PreviousTab<cr>
+map <S-k> :action NextTab<cr>
+map gcc :action CommentByLineComment<CR>
+map <C-i> :action Forward<CR>
+map <C-o> :action Back<CR>
+map <C-p> :action GotoFile<CR>
+map <Leader>em :action ExtractMethod<CR>i
+map <Leader>fsp :action FileStructurePopup<CR>
+map <Leader>ga :action GotoAction<CR>
+map <Leader>gc :action GotoClass<CR>
+map <Leader>gf :action GotoFile<CR>
+map <Leader>gi :action GotoImplementation<CR>
+map <Leader>gr :action GotoRelated<CR>
+map <Leader>gs :action GotoSymbol<CR>
+map <Leader>gsm :action GotoSuperMethod<CR>
+map <Leader>gt :action GotoTest<CR>
+map <Leader>gtd :action GotoTypeDeclaration<CR>
+map <Leader>i :action Inline<CR>i
+map <Leader>ic :action IntroduceConstant<CR>i
+map <Leader>if :action IntroduceField<CR>i
+map <Leader>ip :action IntroduceParameter<CR>i
+map <Leader>iv :action IntroduceVariable<CR>i
+map <Leader>R :action Run<cr>
+map <Leader>rc :action RecentChanges<CR>
+map <Leader>rcf :action RecentChangedFiles<CR>
+map <Leader>re :action RenameElement<CR>i
+map <Leader>rf :action RecentFiles<CR>
+map <Leader>rnf :action RenameFile<CR>
+map <Leader>rqa :action Refactorings.QuickListPopupAction<CR>
+map <Leader>sd :action SafeDelete<CR>i
+map <Leader>se :action SearchEverywhere<CR>
+map <Leader>sfp :action ShowFilePath<CR>
+map <Leader>snb :action ShowNavBar<CR>
+map <Leader>ss :action ShowSiblings<CR>
+map <Leader>vqa :action Vcs.QuickListPopupAction<CR>

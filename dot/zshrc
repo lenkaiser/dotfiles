@@ -1,9 +1,24 @@
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby ruby-2.4.2
+[[ $NOT_FIRST_TIME ]] || {
+    # source /usr/local/opt/chruby/share/chruby/chruby.sh
+    # source /usr/local/opt/chruby/share/chruby/auto.sh
+    # chruby ruby-2.4.2
+    eval "$(rbenv init -)"
+
+    eval "$(goenv init -)"
+
+    NOT_FIRST_TIME=1
+}
+export PATH="$HOME/go/bin:$PATH"
+setopt no_beep
+setopt no_flow_control
+setopt ignore_eof
+setopt interactive_comments
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt extended_glob
+
 # My project folder
-export PROJECTS="$HOME/Documents/Projects"
-export ZGEN_PLUGIN_UPDATE_DAYS=1
 export ZGEN_RESET_ON_CHANGE=($HOME/.zshrc)
 
 # load zgen
@@ -18,13 +33,14 @@ if ! zgen saved; then
 
     # custom
     zgen load wbinglee/zsh-wakatime
-    zgen load b4b4r07/enhancd
-    zgen load RobSis/zsh-completion-generator
-    zgen load MichaelAquilina/zsh-you-should-use
-    zgen load zsh-users/zsh-autosuggestions
-    zgen load Tarrasch/zsh-bd
+    zgen load rupa/z # cd to the most recent dir
+    zgen load junegunn/fzf # Ctrl-t and Ctrl-r fzf bindings
+    zgen load changyuheng/fz
+    zgen load supercrabtree/k # New l
 
     # prezto and modules
+    zgen prezto archive
+    zgen prezto autosuggestions
     zgen prezto git
     zgen prezto command-not-found
     zgen prezto syntax-highlighting
@@ -35,14 +51,27 @@ if ! zgen saved; then
     zgen prezto history-substring-search
     zgen prezto osx
     zgen prezto ruby
-    zgen prezto fasd
     zgen prezto utility
-
-    # zgen load unixorn/autoupdate-zgen
+    zgen prezto fasd
+    zgen prezto gnu-utility
+    zgen prezto homebrew
+    zgen prezto rsync
+    zgen prezto terminal
+    zgen prezto tmux
 
     # generate the init script from plugins above
     zgen save
 fi
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+# export FZF_DEFAULT_COMMAND='
+#   (git ls-tree -r --name-only HEAD ||
+#    fd . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+#       sed s/^..//) 2> /dev/null'
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --preview "head -100 {}" --bind "enter:execute(vim {})"'
 
 # Function for safe sourcing of files
 function include {
@@ -50,10 +79,13 @@ function include {
 }
 
 include $HOME/.iterm2_shell_integration.zsh
-include $HOME/.fzf.zsh
 
 # Load custom functions
-source "$HOME/.zsh/functions.zsh"
+include $HOME/.zsh/functions.zsh
 
 # Load custom aliases
-source "$HOME/.zsh/aliases.zsh"
+include $HOME/.zsh/aliases.zsh
+
+autoload -Uz add-zsh-hook
+add-zsh-hook -D preexec _custom_check_aliases
+add-zsh-hook preexec _custom_check_aliases
