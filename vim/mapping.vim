@@ -1,20 +1,12 @@
 nnoremap g, za
-" Line Shortcuts {{{
-nnoremap j gj
-nnoremap k gk
 nnoremap gV `[v`]
-" }}}
-let mapleader = ' '
-let maplocalleader = ' '
-let g:mapleader = ' '
-" map <space> <leader>
 noremap <CR> :
 noremap <M-Enter> <CR>
-" noremap : <nop>
 noremap <M-:> :
 noremap S <nop>
+noremap ; :
 
-nnoremap <leader>l :call ToggleNumber()<CR>
+nnoremap <Leader>l :call ToggleNumber()<CR>
 
 " Make navigating long, wrapped lines behave like normal lines
 noremap <silent> k gk
@@ -33,19 +25,17 @@ noremap <silent> _ g_
 nnoremap <silent> Y y$
 
 " take first suggested spelling as correct spelling and replace
-nnoremap <silent> <leader>z z=1<CR><CR>
-nnoremap <silent> <leader>zf V$%zf
+nnoremap <silent> <Leader>z z=1<CR><CR>
+nnoremap <silent> <Leader>zf V$%zf
 nnoremap <silent> zT zMzvzczO
 
-" See WV command above
-" nnoremap <silent> <leader>w :WV<CR>
+nnoremap <silent> <Leader>w :WV<CR>
 
-" See Vte command above
-nnoremap <silent> <leader>v :Vte<CR>
+nnoremap <silent> <Leader>v :Vte<CR>
 
-nnoremap <silent> <leader>c :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
+nnoremap <silent> <Leader>c :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
-noremap <silent> <leader>y "+y
+noremap <silent> <Leader>y "+y
 
 nnoremap <silent> <Leader>= :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
@@ -63,21 +53,41 @@ nnoremap <right> <nop>
 " inoremap <right> <nop>
 " inoremap <ESC> <nop>
 
-noremap ; :
-
 " navigate splits by adding the Ctrl-modifier to the analogous vim motion
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nmap <silent> <leader>/ :nohlsearch<CR>
-inoremap jk <esc>
-inoremap jj <esc>
-inoremap kk <esc>
+nmap <silent> <Leader>/ :nohlsearch<CR>
+inoremap jk <ESC>
+inoremap jj <ESC>
+inoremap kk <ESC>
 
-nmap H 0
-vmap H 0
+nmap H ^
+vmap H ^
 nmap L $
 vmap L $
+
+nmap <F8> :TagbarToggle<CR>
 map <F7> :setlocal spell! spell?<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+nnoremap <leader>ht :GitGutterLineHighlightsToggle<CR>
+nnoremap <leader>r  :GitGutterUndoHunk<CR>
+nnoremap <leader>s  :GitGutterStageHunk<CR>
+
+" overrides these bindings from vanilla Vim
+nnoremap gp :GitGutterPrevHunk<CR>
+nnoremap gn :GitGutterNextHunk<CR>
+
+" Open/close tagbar with \b
+"nnoremap <silent> <leader>b :TagbarToggle<CR>
+map <Leader>tt <esc>:TagbarToggle<cr>
+
+map <Leader>s <esc>:ConqueTermSplit bash<cr>

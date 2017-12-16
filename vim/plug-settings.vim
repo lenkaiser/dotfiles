@@ -1,12 +1,13 @@
 scriptencoding utf-8
 
-hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
+"colorscheme molokai
+
+"hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
 " ----- bling/vim-airline settings ----- {{{
 let g:airline_detect_paste=1
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#wordcount#filetypes = '\vhelp|markdown|pandoc|rst|org'
-set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_theme = 'molokai'
@@ -15,10 +16,8 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_sep = ''
 "  }}}
-" ----- majutsushi/tagbar settings ----- {{{
-" Open/close tagbar with \b
-nnoremap <silent> <leader>b :TagbarToggle<CR>
 
+" ----- majutsushi/tagbar settings ----- {{{
 " Order tags based on file order; don't sort alphabetically
 let g:tagbar_sort = 0
 
@@ -81,6 +80,7 @@ let g:tagbar_type_eruby = {
 \ }
 
 " }}}
+
 " ----- xolox/vim-easytags settings ----- {{{
 set tags=./tags;,~/.vimtags
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
@@ -101,9 +101,18 @@ let g:easytags_languages = {
 \ }
 
 " }}}
-" " ----- scrooloose/syntastic settings ----- {{{
-" let g:syntastic_error_symbol = '✘'
-" let g:syntastic_warning_symbol = "▲"
+
+" ----- scrooloose/syntastic settings ----- {{{
+"mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+"automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+"show the error list automatically
+let g:syntastic_auto_loc_list=1
+"don't care about warnings
+"let g:syntastic_quiet_warnings=0
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
 " let g:syntastic_check_on_wq = 0
 " augroup mySyntastic
 "   au!
@@ -125,33 +134,21 @@ let g:easytags_languages = {
 " nnoremap <leader>ST :SyntasticToggleMode<CR>
 " nnoremap <leader>SR :SyntasticReset<CR>
 
-" " Follow `source` statements in shell code
-" let g:syntastic_sh_shellcheck_args = "-x"
+" Follow `source` statements in shell code
+let g:syntastic_sh_shellcheck_args = "-x"
 
-" " }}}
+" }}}
+
 " ----- airblade/vim-gitgutter settings ----- {{{
 hi clear SignColumn
 
-nnoremap <leader>ht :GitGutterLineHighlightsToggle<CR>
-nnoremap <leader>r  :GitGutterUndoHunk<CR>
-nnoremap <leader>s  :GitGutterStageHunk<CR>
-
-" overrides these bindings from vanilla Vim
-nnoremap gp :GitGutterPrevHunk<CR>
-nnoremap gn :GitGutterNextHunk<CR>
-
 " Update signs faster. Proceed at own risk (might be expensive for you).
-set updatetime=500
+"set updatetime=500
 
 " I have a patched Solarized plugin that sets these groups up
 hi! link GitGutterAdd    gitgutterAdd
 hi! link GitGutterChange gitgutterChange
 hi! link GitGutterDelete gitgutterDelete
-
-" }}}
-" ----- jez/vim-superman settings ----- {{{
-" better man page support
-noremap K :SuperMan <cword><CR>
 
 " }}}
 
@@ -182,14 +179,15 @@ let g:fzf_action = {
 \}
 
 " }}}
+
 " ----- Builtin Vim plugins ----- {{{
 " When viewing directories, show nested tree mode
 let g:netrw_liststyle=3
 " Don't create .netrwhist files
 let g:netrw_dirhistmax = 0
-
 " }}}
 
+" ----- NERDTree ----- {{{
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -197,9 +195,13 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+" }}}
 
+" ----- MRU ----- {{{
 let MRU_Max_Entries = 400
 map <leader>f :MRU<CR>
+" }}}
 
+" ----- vimwiki ----- {{{
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
-
+" }}}

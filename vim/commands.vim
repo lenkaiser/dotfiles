@@ -1,5 +1,3 @@
-" ----- Convenience commands and cabbrev's ----------------------------------
-
 " Make these commonly mistyped commands still work
 command! -bang WQ wq<bang>
 command! -bang Wq wq<bang>
@@ -17,8 +15,8 @@ command! WS w !sudo tee %
 cabbrev help tab help
 
 " Open terminal in a split split
-command! Vte vsplit | terminal
-command! Ste split | terminal
+"command! Vte vsplit | terminal
+"command! Ste split | terminal
 
 " Open scratch buffer in a split on left
 command! Vsnew vert new | norm <C-w>H
