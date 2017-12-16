@@ -79,13 +79,36 @@ function _clean {
 
 # Update the system
 function _update {
-    softwareupdate -d -a
+    sudo -v
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    sudo softwareupdate -ia
     mas upgrade
     brew update
     brew upgrade
-    brew cu -a -y
+    brew cu -ay
     gem update
+    gem update --system
     npm up -g
+}
+
+# Reset applications' settings
+function _reset {
+    function rr {
+        echo "Removing $1"
+        rm -rf $1
+    }
+    function rpref {
+        rr ~/Library/Preferences/$1
+    }
+    function rcach {
+        rr ~/Library/Caches/$1
+    }
+    function rcook {
+        rr ~/Library/Cookies/$1
+    }
+    rpref com.surteesstudios.Bartender.plist
+    rcach com.surteesstudios.Bartender
+    rcook com.surteesstudios.Bartender.binarycookies
 }
 
 # Move c to $2 and create symbolic link of $2 in $1

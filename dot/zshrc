@@ -3,8 +3,8 @@
     # source /usr/local/opt/chruby/share/chruby/auto.sh
     # chruby ruby-2.4.2
     eval "$(rbenv init -)"
-
     eval "$(goenv init -)"
+    eval $(thefuck --alias)
 
     NOT_FIRST_TIME=1
 }
@@ -89,3 +89,4 @@ include $HOME/.zsh/aliases.zsh
 autoload -Uz add-zsh-hook
 add-zsh-hook -D preexec _custom_check_aliases
 add-zsh-hook preexec _custom_check_aliases
+doing

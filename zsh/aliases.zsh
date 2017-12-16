@@ -46,7 +46,7 @@ alias o='open'
 # alias rmi='rm -i'
 
 alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
+# alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
 # alias f='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
@@ -61,3 +61,4 @@ alias bi='brew install'
 
 # alias l='k -Ah --si'
 alias ks='k -Ah --si'
+alias swiftformat='swiftformat --indent 4 --indentcase true'
