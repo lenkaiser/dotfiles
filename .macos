@@ -23,13 +23,16 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # sudo scutil --set LocalHostName $THEHOSTNAME
 # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $THEHOSTNAME
 
-sudo pmset -a \ # all power sources
+# all power sources
+sudo pmset -a \
     lessbright 0 \
     acwake 0 \
     halfdim 0 \
     sms 0 \
     standby 1
-sudo pmset -b \ # battery
+
+# battery
+sudo pmset -b \
     hibernatemode 25 \
     standbydelay 1800 \
     autopoweroff 1 \
@@ -37,13 +40,15 @@ sudo pmset -b \ # battery
     sleep 10 \
     displaysleep 10 \
     disksleep 10
-sudo pmset -c \ # charger
+
+# charger
+sudo pmset -c \
     hibernatemode 0 \
     standbydelay 86400 \
     autopoweroff 0 \
     sleep 30 \
     displaysleep 20 \
-    disksleep 0
+    disksleep 30
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
