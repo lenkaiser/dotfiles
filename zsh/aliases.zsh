@@ -7,25 +7,23 @@ fi
 if which exa >/dev/null 2>&1; then
     alias ls='exa'
     alias l='exa -la --git'
-    alias la="exa -abghl --git"
+    alias la='exa -abghl --git'
     alias ll='exa -l --git'
 fi
 
-alias man="mand"
-# alias reload=". $HOME/.zshrc"
+alias man='mand'
 alias reload="exec $SHELL"
 
 alias killaudio='sudo killall -m -9 coreaudio'
-alias atom=atom-beta
-alias pip=pip2
-alias cat=ccat
-alias top="htop"
+alias atom='atom-beta'
+alias pip='pip2'
+alias cat='ccat'
+alias top='htop'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias _='sudo'
 
 alias diffu="diff --unified"
-alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias po='popd'
 alias pu='pushd'
 alias sa='alias | grep -i'
@@ -43,22 +41,16 @@ fi
 
 alias o='open'
 
-# alias rmi='rm -i'
-
 alias a='fasd -a'        # any
-# alias s='fasd -si'       # show / search / select
+alias si='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
-# alias f='fasd -f'        # file
+alias f='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
-# alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-# alias zz='fasd_cd -d -i' # cd with interactive selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
 # alias v='f -t -e vim'
-alias f='fzf'
+alias v='v -l'
+alias ff='fzf'
 
-alias bs='brew search'
-alias bi='brew install'
-
-# alias l='k -Ah --si'
-alias ks='k -Ah --si'
 alias swiftformat='swiftformat --indent 4 --indentcase true'

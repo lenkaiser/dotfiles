@@ -1,0 +1,12 @@
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+sudo softwareupdate -ia
+mas upgrade
+brew update
+brew upgrade
+brew cu -ay
+gem update
+gem update --system
+npm up -g
+
+# vim: set filetype=zsh :

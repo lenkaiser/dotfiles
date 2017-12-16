@@ -1,0 +1,35 @@
+# zsh check aliases
+IFS=$' '
+local found_aliases
+local found_aliases=()
+local best_match=""
+local v
+[[ -z "$(echo $1)" ]] && return
+local carr=($(echo $1))
+local c=${carr[@]:0:2}
+
+# Find alias matches
+for k in "${(@k)aliases}"; do
+    v="${aliases[$k]}"
+
+    if [[ $v =~ $c ]]; then
+        found_aliases+="$k"
+
+        # Match aliases to longest portion of command
+        if [[ "${#v}" -gt "${#best_match}" ]]; then
+            best_match="$k"
+            # on equal length, choose the shortest alias
+        elif [[ "${#v}" -eq "${#best_match}" && ${#k} -lt "${#best_match}" ]]; then
+            best_match="$k"
+        fi
+    fi
+done 2>/dev/null
+[[ -z "$best_match" ]] && return
+echo "\033[1mBest alias found for \"${aliases[$best_match]}\". You should use: \"$best_match\"\033[00m"
+[[ ${#found_aliases} -eq 1 ]] && return
+for k in ${(@ok)found_aliases:0:5}; do
+    echo "\033[1mAnother alias for \"${aliases[$k]}\". You should use: \"$k\"\033[00m"
+done
+[[ ${#found_aliases} -gt 5 ]] && echo "\033[1...\033[00m"
+
+# vim: set filetype=zsh :
