@@ -2,13 +2,10 @@ scriptencoding utf-8
 " source ~/.vim/init.vim
 " source ~/.vim/mapping.vim
 
-" let mapleader=<Space>
-
 set surround
-" set keep-english-in-normal
-set clipboard=unnamed " 'cb'    clipboard options
+set clipboard=unnamed,unnamedplus " 'cb'    clipboard options
 " set digraph         " 'dg'    enable the entering of digraphs in Insert mode
-" set gdefault        " 'gd'    the ":substitute" flag 'g' is default on
+" set gdefault        " 'gd'    the :substitute flag 'g' is default on
 set history=1000    " 'hi'    number of command-lines that are remembered
 set hlsearch        " 'hls'   highlight matches with last search pattern
 set igcase      " 'ic'    ignore case in search patterns
@@ -17,8 +14,7 @@ set incsearch       " 'is'    show where search pattern typed so far matches
 set matchpairs      " 'mps'   pairs of characters that "%" can match
 " set nrformats       " 'nf'    number formats recognized for CTRL-A command
 " set number          " 'nu'    print the line number in front of each line
-set relativenumber  " 'rnu'   show the line number relative to the line with
-                         " the cursor
+set relativenumber  "the line number relative to the line with the cursor
 " set scroll          " 'scr'   lines to scroll with CTRL-U and CTRL-D
 " set scrolljump 1    " 'sj'    minimum number of lines to scroll
 set scrolloff=10   " 'so'    minimum nr. of lines above and below cursor
@@ -30,30 +26,26 @@ set smartcase       " 'scs'   no ig case when pattern has uppercase
 set timeout         " 'to'    use timeout for mapped key sequences
 set timeoutlen=1000 " 'tm'    time that is waited for a mapped key sequence
 " set undolevels      " 'ul'    maximum number of changes that can be undone
-set viminfo='50,<1000,s100,:100,n~/.viminfo         " 'vi'
-                                " information to remember after restart
+set viminfo='50,<1000,s100,:100,n~/.viminfo "information to remember
 set visualbell      " 'vb'    use visual bell instead of beeping
 set wrapscan        " 'ws'    searches wrap around the end of the file
 
 noremap ; :
 nmap <Leader>vs :source ~/.ideavimrc<CR>
-nmap <silent> <leader>/ :nohlsearch<CR>
-inoremap jk <esc>
-inoremap jj <esc>
-inoremap kk <esc>
+nmap <Silent> <Leader>/ :nohlsearch<CR>
+inoremap jk <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
 
-nmap H 0
-vmap H 0
+nmap H ^
+vmap H ^
 nmap L $
 vmap L $
 
 map gf :action AceAction<CR>
-map gw :action AceJumpAction<CR>
-map gG :action AceLineAction<CR>
-map gF :action AceTargetAction<CR>
-
-" map <Leader>tl Vy<CR>:action ActivateTerminalToolWindow<CR>
-" vmap <Leader>tl y<CR>:action ActivateTerminalToolWindow<CR>
+" map gw :action AceJumpAction<CR>
+map gl :action AceLineAction<CR>
+map ge :action AceTargetAction<CR>
 
 map <S-j> :action PreviousTab<cr>
 map <S-k> :action NextTab<cr>

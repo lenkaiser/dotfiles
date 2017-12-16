@@ -4,6 +4,7 @@ syntax enable           " enable syntax processing
 colorscheme jay
 filetype indent on
 filetype plugin on
+set nocompatible
 set termguicolors
 set clipboard=unnamed,unnamedplus
 set backspace=indent,eol,start
@@ -53,6 +54,7 @@ set listchars-=eol:$   " Don't show trailing end-of-line characters
 set cinkeys-=0#        " Let #pragma directives appear anywhere in a line
 
 set wildmode=full
+set viminfo='50,<1000,s100,:100,n~/.viminfo "information to remember
 
 
 " Always show the status line
@@ -80,9 +82,9 @@ endif
 
 " NeoVim and iTerm2 have support to display different cursor shapes than just
 " the standard white block.
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+"   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+"   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Backups {{{
 set backup
