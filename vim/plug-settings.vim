@@ -103,53 +103,14 @@ let g:easytags_languages = {
 " }}}
 
 " ----- scrooloose/syntastic settings ----- {{{
-"mark syntax errors with :signs
-let g:syntastic_enable_signs=1
-"automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-"show the error list automatically
-let g:syntastic_auto_loc_list=1
-"don't care about warnings
-"let g:syntastic_quiet_warnings=0
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-" let g:syntastic_check_on_wq = 0
-" augroup mySyntastic
-"   au!
-"   au FileType tex let b:syntastic_mode = "passive"
-"   au BufRead,BufNewFile *.cjsx let b:syntastic_mode = "passive"
-"   au FileType typescript let b:syntastic_mode = "passive"
-"   au FileType cpp let b:syntastic_mode = "passive"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"   " Disabled; handled by Neomake
-"   au FileType javascript let b:syntastic_mode = "passive"
-"   au FileType css let b:syntastic_mode = "passive"
-
-"   au FileType sml let g:syntastic_always_populate_loc_list = 1
-"   au FileType sml let g:syntastic_auto_loc_list = 1
-
-"   au FileType purescript let g:syntastic_auto_loc_list = 1
-" augroup END
-
-" nnoremap <leader>ST :SyntasticToggleMode<CR>
-" nnoremap <leader>SR :SyntasticReset<CR>
-
-" Follow `source` statements in shell code
-let g:syntastic_sh_shellcheck_args = "-x"
-
-" }}}
-
-" ----- airblade/vim-gitgutter settings ----- {{{
-hi clear SignColumn
-
-" Update signs faster. Proceed at own risk (might be expensive for you).
-"set updatetime=500
-
-" I have a patched Solarized plugin that sets these groups up
-hi! link GitGutterAdd    gitgutterAdd
-hi! link GitGutterChange gitgutterChange
-hi! link GitGutterDelete gitgutterDelete
-
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " }}}
 
 " ----- ntpeters/vim-better-whitespace ----- {{{

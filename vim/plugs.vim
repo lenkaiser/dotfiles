@@ -10,24 +10,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"Plug 'vim-scripts/bash-support.vim'
 Plug 'tokorom/clang_complete-getopts-ios'
 Plug 'vim-scripts/cocoa.vim'
-"Plug 'wincent/command-t', { 'do': g:cmdt_install }
-"Plug 'rizzatti/dash.vim'
-"Plug 'editorconfig/editorconfig-vim'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'keith/swift.vim'
 Plug 'vim-syntastic/syntastic'
-"Plug 'vim-scripts/TagHighlight'
-"Plug 'tomtom/tlib_vim'
-"Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'skwp/vim-conque'
 Plug 'eraserhd/vim-ios'
-"Plug 'junegunn/vim-plug'
-"Plug 'sheerun/vim-polyglot'
 Plug 'toyamarinyon/vim-swift',
-"Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf'
 Plug 'tomasr/molokai'
 Plug 'vim-scripts/mru.vim'
@@ -47,6 +36,16 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 Plug 'vimwiki/vimwiki'
 Plug 'valloric/youcompleteme', { 'do': './install.py' }
+Plug 'vim-scripts/bash-support.vim'
+Plug 'wincent/command-t', { 'do': g:cmdt_install }
+Plug 'rizzatti/dash.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-scripts/TagHighlight'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'junegunn/vim-plug'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 syntax enable

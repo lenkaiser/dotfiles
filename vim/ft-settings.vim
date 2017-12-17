@@ -4,6 +4,7 @@ augroup myFiletypes
     au!
 
     au BufRead,BufNewFile BUCK setlocal filetype=python
+    au BufRead,BufNewFile Podfile setlocal filetype=ruby
     au BufRead,BufNewFile *.md,*.markdown setlocal filetype=ghmarkdown
     au BufRead,BufNewFile .amethyst setlocal filetype=json
     au BufRead,BufNewFile .jrnl_config setlocal filetype=json
