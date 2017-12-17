@@ -89,4 +89,4 @@ autoload -Uz add-zsh-hook
 add-zsh-hook -D preexec _custom_check_aliases
 add-zsh-hook preexec _custom_check_aliases
 
-#doing || true
+doing
