@@ -6,7 +6,7 @@ all: clean install
 .PHONY: install
 install: zgen link
 	sh $(DOT_FOLDER)/.macos
-	vim -c :PlugInstall
+	vim +PlugInstall +qa
 
 .PHONY: zgen
 zgen:
