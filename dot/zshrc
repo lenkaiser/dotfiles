@@ -1,79 +1,142 @@
-export RBENV_VERSION=2.4.3
-#export PATH="$HOME/.fastlane/bin:$PATH"
+export COMPLETION_WAITING_DOTS="true"
+
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-eval "$(goenv init -)"
-eval "$(thefuck --alias)"
-eval "$(rbenv init -)"
+export RBENV_VERSION=2.4.3
+export BYOBU_PREFIX=/usr/local
 
-setopt no_beep
-setopt no_flow_control
-setopt ignore_eof
-setopt interactive_comments
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt extended_glob
+#eval "$(goenv init -)"
+#eval "$(rbenv init -)"
+#eval "$(thefuck --alias)"
+
+# Conditional PATH additions
+for path_candidate in /opt/local/sbin \
+    /Applications/Xcode.app/Contents/Developer/usr/bin \
+    /opt/local/bin \
+    /usr/local/share/npm/bin \
+    ~/.cabal/bin \
+    ~/.cargo/bin \
+    ~/.rbenv/bin \
+    ~/bin \
+    ~/src/gocode/bin
+do
+    if [ -d ${path_candidate} ]; then
+        export PATH=${PATH}:${path_candidate}
+    fi
+done
+
+export LSCOLORS='Exfxcxdxbxegedabagacad'
+export LS_COLORS='di=1;34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 
 # Function for safe sourcing of files
 function include {
     [[ -s "$1" ]] && source "$1" || echo "$1 not loaded"
 }
 
-# My project folder
-export ZGEN_RESET_ON_CHANGE=($HOME/.zshrc)
+# start zgen
+include $HOME/.zsh/zgen-setup.zsh
+# end zgen
 
-# load zgen
-include $HOME/.zgen/zgen.zsh
+# set some history options
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_verify
 
-if ! zgen saved; then
-    zgen prezto
+# Share your history across all your terminal windows
+setopt share_history
+#setopt noclobber
 
-    # prezto options
-    zgen prezto editor key-bindings 'vi'
-    zgen prezto prompt theme 'pure'
+# set some more options
+setopt pushd_ignore_dups
+#setopt pushd_silent
 
-    # custom
-    zgen load wbinglee/zsh-wakatime
-    zgen load junegunn/fzf # Ctrl-t and Ctrl-r fzf bindings
+# Keep a ton of history.
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
-    # prezto and modules
-    zgen prezto archive
-    zgen prezto autosuggestions
-    zgen prezto git
-    zgen prezto command-not-found
-    zgen prezto syntax-highlighting
-    zgen prezto completion
-    zgen prezto directory
-    #zgen prezto environment
-    zgen prezto history
-    zgen prezto history-substring-search
-    zgen prezto osx
-    #zgen prezto ruby
-    zgen prezto utility
-    zgen prezto fasd
-    zgen prezto gnu-utility
-    zgen prezto homebrew
-    zgen prezto rsync
-    zgen prezto terminal
-    #zgen prezto tmux
+# Long running processes should return time after they complete. Specified
+# in seconds.
+REPORTTIME=2
+TIMEFMT="%U user %S system %P cpu %*Es total"
 
-    # generate the init script from plugins above
-    zgen save
+# Expand aliases inline - see http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+globalias() {
+    if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle self-insert
+}
+
+zle -N globalias
+
+bindkey " " globalias
+bindkey "^ " magic-space           # control-space to bypass completion
+bindkey -M isearch " " magic-space # normal space during searches
+
+export LOCATE_PATH=/var/db/locate.database
+
+# JAVA setup - needed for iam-* tools
+if [ -d /Library/Java/Home ];then
+    export JAVA_HOME=/Library/Java/Home
 fi
 
-#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# Speed up autocomplete, force prefix mapping
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
+
+# Load any custom zsh completions we've installed
+if [ -d ~/.zsh-completions ]; then
+    for completion in ~/.zsh-completions/*
+    do
+        source "$completion"
+    done
+fi
+
+# In case a plugin adds a redundant path entry, remove duplicate entries
+# from PATH
+#
+# This snippet is from Mislav Marohnić <mislav.marohnic@gmail.com>'s
+# dotfiles repo at https://github.com/mislav/dotfiles
+
+dedupe_path() {
+    typeset -a paths result
+    paths=($path)
+
+    while [[ ${#paths} -gt 0 ]]; do
+        p="${paths[1]}"
+        shift paths
+        [[ -z ${paths[(r)$p]} ]] && result+="$p"
+    done
+
+    export PATH=${(j+:+)result}
+}
+
+dedupe_path
+
+# If desk is installed, load the Hook for desk activation
+[[ -n "$DESK_ENV" ]] && source "$DESK_ENV"
+
+##export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 export FZF_DEFAULT_COMMAND='
-  (git ls-tree -r --name-only HEAD ||
-   fd . -path "*/\.*" -prune -o -type f -print -o -type l -print |
-      sed s/^..//) 2> /dev/null'
+(git ls-tree -r --name-only HEAD ||
+    fd . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+    sed s/^..//) 2> /dev/null'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border --preview "head -100 {}" --bind "enter:execute(vim {})"'
-
-include $HOME/.iterm2_shell_integration.zsh
 
 fpath=(~/.zsh/funcs $fpath)
 autoload _custom_check_aliases _clean _update _reset _movelink
@@ -84,9 +147,28 @@ include $HOME/.zsh/functions.zsh
 # Load custom aliases
 include $HOME/.zsh/aliases.zsh
 
+include $HOME/.local/share/marker/marker.sh
+include $HOME/.qfc/bin/qfc.sh
+
 # zsh hook to suggest to use alias instead of full command
 autoload -Uz add-zsh-hook
 add-zsh-hook -D preexec _custom_check_aliases
 add-zsh-hook preexec _custom_check_aliases
 
+export CLICOLOR=1
+export TERM='xterm-256color'
+export PAGER=/usr/local/bin/vimpager
+export EDITOR=vim
+alias less=$PAGER
+alias zless=$PAGER
+
+autoload -U deer
+zle -N deer
+bindkey '\ek' deer
+
+include "${HOME}/.iterm2_shell_integration.zsh"
+include /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+# personal messages
+echo "--Practice pacvim--\n"
 doing

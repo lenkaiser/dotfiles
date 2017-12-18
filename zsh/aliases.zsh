@@ -53,4 +53,5 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias v='v -l'
 alias ff='fzf'
 
+alias git=hub
 alias swiftformat='swiftformat --indent 4 --indentcase true'
