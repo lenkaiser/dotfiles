@@ -1,6 +1,7 @@
 scriptencoding utf-8
 
 "set nocompatible
+"set rtp+=/usr/local/opt/fzf
 
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -121,15 +122,15 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 "" }}}
 
-augroup vimrc
-  " Clear the current autocmd group, in case we're re-sourcing the file
-  au!
+"augroup vimrc
+  "" Clear the current autocmd group, in case we're re-sourcing the file
+  "au!
 
-  " Jump to the last known cursor position when opening a file.
-  autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
+  "" Jump to the last known cursor position when opening a file.
+  "autocmd BufReadPost *
+        "\ if line("'\"") > 1 && line("'\"") <= line("$") |
+        "\   exe "normal! g`\"" |
+        "\ endif
 
-augroup END
+"augroup END
 

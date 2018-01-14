@@ -91,3 +91,4 @@ nnoremap gn :GitGutterNextHunk<CR>
 map <Leader>tt <esc>:TagbarToggle<cr>
 
 map <Leader>s <esc>:ConqueTermSplit bash<cr>
+nnoremap <C-P> :FZF<CR>

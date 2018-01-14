@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-let g:cmdt_install = 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+let g:cmdt_install = 'cd ruby/command-t/ext/command-t && rbenv exec ruby extconf.rb && make'
 let g:ycm_install = './install.py' " --all'
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -17,7 +17,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'skwp/vim-conque'
 Plug 'eraserhd/vim-ios'
 Plug 'toyamarinyon/vim-swift',
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tomasr/molokai'
 Plug 'vim-scripts/mru.vim'
 Plug 'scrooloose/nerdtree'
@@ -37,7 +37,7 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }
 Plug 'vimwiki/vimwiki'
 Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'vim-scripts/bash-support.vim'
-Plug 'wincent/command-t', { 'do': g:cmdt_install }
+"Plug 'wincent/command-t', { 'do': g:cmdt_install }
 Plug 'rizzatti/dash.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/TagHighlight'

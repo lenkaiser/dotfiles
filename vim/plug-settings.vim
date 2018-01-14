@@ -81,26 +81,26 @@ let g:tagbar_type_eruby = {
 
 " }}}
 
-" ----- xolox/vim-easytags settings ----- {{{
-set tags=./tags;,~/.vimtags
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
+"" ----- xolox/vim-easytags settings ----- {{{
+"set tags=./tags;,~/.vimtags
+"let g:easytags_events = ['BufReadPost', 'BufWritePost']
+"let g:easytags_async = 1
+"let g:easytags_dynamic_files = 2
+"let g:easytags_resolve_links = 1
+"let g:easytags_suppress_ctags_warning = 1
 
-" \     'stdout_opt': '-f -'
-" \     'stdout_opt': '-f -'
-let g:easytags_languages = {
-\   'javascript.jsx': {
-\     'cmd': '~/bin/gtags'
-\   },
-\   'ruby': {
-\     'cmd': 'ripper-tags'
-\   }
-\ }
+"" \     'stdout_opt': '-f -'
+"" \     'stdout_opt': '-f -'
+"let g:easytags_languages = {
+"\   'javascript.jsx': {
+"\     'cmd': '~/bin/gtags'
+"\   },
+"\   'ruby': {
+"\     'cmd': 'ripper-tags'
+"\   }
+"\ }
 
-" }}}
+"" }}}
 
 " ----- scrooloose/syntastic settings ----- {{{
 set statusline+=%#warningmsg#
@@ -127,9 +127,6 @@ highlight Extrawhitespace ctermbg=red guibg=#dc322f
 " }}}
 
 " ----- fzf ----- {{{
-set runtimepath+=/usr/local/bin/fzf
-nnoremap <C-P> :FZF<CR>
-
 " <CR> to open in new tab, <C-E> for current buffer
 let g:fzf_action = {
   \ 'ctrl-m': 'tabedit',
