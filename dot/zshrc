@@ -124,3 +124,5 @@ dedupe_path
 # personal messages
 echo "--Practice pacvim--\n"
 #doing
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
