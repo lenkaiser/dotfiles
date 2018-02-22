@@ -16,8 +16,9 @@ function load-plugin-list() {
     zgen load zsh-users/zsh-history-substring-search
 
     # Set keystrokes for substring searching
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
+    #bindkey '^[[A' history-substring-search-up
+    #bindkey '^[[B' history-substring-search-down
+    zgen load iam4x/zsh-iterm-touchbar
 
     zgen load wbinglee/zsh-wakatime
 
@@ -35,17 +36,17 @@ function load-plugin-list() {
     zgen load unixorn/git-extra-commands
 
     # Add my bitbucket git helpers plugin
-    zgen load unixorn/bitbucket-git-helpers.plugin.zsh
+    #zgen load unixorn/bitbucket-git-helpers.plugin.zsh
 
     # Adds aliases to open your current repo & branch on github.
     zgen load peterhurford/git-it-on.zsh
 
     # Tom Limoncelli's tooling for storing private information (keys, etc)
     # in a repository securely by encrypting them with gnupg
-    zgen load StackExchange/blackbox
+    #zgen load StackExchange/blackbox
 
     # Load some oh-my-zsh plugins
-    zgen oh-my-zsh plugins/brew
+    #zgen oh-my-zsh plugins/brew
     zgen oh-my-zsh plugins/cabal
     zgen oh-my-zsh plugins/cargo
     zgen oh-my-zsh plugins/colorize
@@ -72,7 +73,7 @@ function load-plugin-list() {
     zgen oh-my-zsh plugins/globalias
     zgen oh-my-zsh plugins/gnu-utils
     zgen oh-my-zsh plugins/history
-    zgen oh-my-zsh plugins/history-substring-search
+    #zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/iterm2
     zgen oh-my-zsh plugins/jsontools
     zgen oh-my-zsh plugins/last-working-dir

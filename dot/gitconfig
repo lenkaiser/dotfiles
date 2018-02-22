@@ -16,3 +16,6 @@
     renamelimit = 2415
 [alias]
     s = status --short
+	update = !git pull && git submodule update --init --recursive
+[credential]
+	helper = osxkeychain
