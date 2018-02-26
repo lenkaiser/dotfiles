@@ -4,14 +4,17 @@ DOT_FOLDER = $(shell pwd)
 all: clean install
 
 .PHONY: path
-path: 
+path:
 	echo $(DOT_FOLDER)
 
 .PHONY: install
 install: zgen link
-	sh $(DOT_FOLDER)/.macos
 	/usr/local/bin/zsh ~/.zshrc
 	vim +PlugInstall! +qa
+
+.PHONY: macos
+macos:
+	sh $(DOT_FOLDER)/.macos
 
 .PHONY: zgen
 zgen:

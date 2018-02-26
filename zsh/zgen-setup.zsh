@@ -16,16 +16,14 @@ function load-plugin-list() {
     zgen load zsh-users/zsh-history-substring-search
 
     # Set keystrokes for substring searching
-    #bindkey '^[[A' history-substring-search-up
-    #bindkey '^[[B' history-substring-search-down
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+
     zgen load iam4x/zsh-iterm-touchbar
 
     zgen load wbinglee/zsh-wakatime
 
     zgen load joepvd/zsh-hints
-    zgen load Vifon/deer
-    zgen load b4b4r07/enhancd
-    zgen load fabiokiatkowski/exercism.plugin.zsh
 
     # OS X helpers. This plugin is smart enough to detect when it isn't running
     # on OS X and not load itself, so you can safely share the same plugin list
@@ -35,36 +33,18 @@ function load-plugin-list() {
     # Add my collection of git helper scripts
     zgen load unixorn/git-extra-commands
 
-    # Add my bitbucket git helpers plugin
-    #zgen load unixorn/bitbucket-git-helpers.plugin.zsh
-
     # Adds aliases to open your current repo & branch on github.
     zgen load peterhurford/git-it-on.zsh
 
-    # Tom Limoncelli's tooling for storing private information (keys, etc)
-    # in a repository securely by encrypting them with gnupg
-    #zgen load StackExchange/blackbox
-
     # Load some oh-my-zsh plugins
-    #zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/cabal
-    zgen oh-my-zsh plugins/cargo
     zgen oh-my-zsh plugins/colorize
-    zgen oh-my-zsh plugins/command-not-found
     zgen oh-my-zsh plugins/common-aliases
     zgen oh-my-zsh plugins/compleat
-    zgen oh-my-zsh plugins/copybuffer
-    zgen oh-my-zsh plugins/copydir
-    zgen oh-my-zsh plugins/copyfile
-    zgen oh-my-zsh plugins/cp
-    zgen oh-my-zsh plugins/dircycle
-    zgen oh-my-zsh plugins/dirpersist
     zgen oh-my-zsh plugins/fasd
     zgen oh-my-zsh plugins/forklift
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/git-extras
     zgen oh-my-zsh plugins/git-flow
-    zgen oh-my-zsh plugins/git-hubflow
     zgen oh-my-zsh plugins/git-hubflow
     zgen oh-my-zsh plugins/git-prompt
     zgen oh-my-zsh plugins/gitfast
@@ -73,12 +53,10 @@ function load-plugin-list() {
     zgen oh-my-zsh plugins/globalias
     zgen oh-my-zsh plugins/gnu-utils
     zgen oh-my-zsh plugins/history
-    #zgen oh-my-zsh plugins/history-substring-search
+    zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/iterm2
-    zgen oh-my-zsh plugins/jsontools
     zgen oh-my-zsh plugins/last-working-dir
     zgen oh-my-zsh plugins/osx
-    zgen oh-my-zsh plugins/per-directory-history
     zgen oh-my-zsh plugins/pip
     zgen oh-my-zsh plugins/python
     zgen oh-my-zsh plugins/rsync
@@ -106,23 +84,6 @@ function load-plugin-list() {
     # you'll have to explicitly generate a completion, but it's still quite cool.
     zgen load RobSis/zsh-completion-generator
 
-    ## custom
-    #zgen load junegunn/fzf shell # Ctrl-t and Ctrl-r fzf bindings
-    #zgen load psprint/zsh-cmd-architect
-    #zgen load psprint/zsh-navigation-tools
-
-    #zgen load chrissicool/zsh-bash
-    #zgen load zsh-users/zaw
-    #zgen load unixorn/git-extra-commands
-    #zgen load marzocchi/zsh-notify
-    #zgen load wuotr/zsh-plugin-vscode
-    #zgen load AlexisBRENON/oh-my-zsh-reminder
-    #zgen load paulmelnikow/zsh-startup-timer
-    #zgen load sharat87/zsh-vim-mode
-    #zgen load laurenkt/zsh-vimto
-    #zgen load psprint/ztrace
-    #zgen load peterhurford/git-aliases.zsh
-
     # Load me last
     GENCOMPL_FPATH=$HOME/.zsh/complete
 
@@ -133,14 +94,8 @@ function load-plugin-list() {
     zgen save
 }
 
-autoload -U deer
-zle -N deer
-bindkey '\ek' deer
-
-zle -N znt-cd-widget
-bindkey "^A" znt-cd-widget
-zle -N znt-kill-widget
-bindkey "^Y" znt-kill-widget
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 if ! zgen saved; then
     load-plugin-list

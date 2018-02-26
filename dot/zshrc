@@ -1,6 +1,6 @@
 # Function for safe sourcing of files
 function include {
-    [[ -s "$1" ]] && source "$1" || echo "$1 not loaded"
+    [[ -s "$1" ]] && source "$1" || echo "$1 not found"
 }
 
 # In case a plugin adds a redundant path entry, remove duplicate entries
@@ -23,7 +23,7 @@ dedupe_path() {
 }
 
 # Start
-export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+#export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 export COMPLETION_WAITING_DOTS="true"
 export BYOBU_PREFIX=/usr/local
