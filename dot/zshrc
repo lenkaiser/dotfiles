@@ -101,9 +101,10 @@ export FZF_DEFAULT_OPTS='--height 70% --reverse --border --preview "head -100 {}
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/platform-tools":$PATH
+export PATH="$HOME/flutter/bin":$PATH
 
 fpath=(~/.zsh/funcs $fpath)
-autoload _custom_check_aliases _clean _update _reset _movelink
+autoload _custom_check_aliases _clean _update _movelink _commit
 
 # Load custom functions
 include $HOME/.zsh/functions.zsh
@@ -124,5 +125,3 @@ dedupe_path
 # personal messages
 echo "--Practice pacvim--\n"
 #doing
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
