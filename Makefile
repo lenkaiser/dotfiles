@@ -9,7 +9,7 @@ path:
 
 .PHONY: install
 install: zgen link
-	/usr/local/bin/zsh ~/.zshrc
+	zsh ~/.zshrc
 	vim +PlugInstall! +qa
 
 .PHONY: macos
