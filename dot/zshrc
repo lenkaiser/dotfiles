@@ -27,9 +27,14 @@ dedupe_path() {
 
 export COMPLETION_WAITING_DOTS="true"
 export BYOBU_PREFIX=/usr/local
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 eval "$(rbenv init -)"
 eval "$(jenv init -)"
+
+# set template
+ZSH_THEME="agnoster"
 
 # start zgen
 include $HOME/.zsh/zgen-setup.zsh
@@ -97,10 +102,8 @@ if [ -d ~/.zsh-completions ]; then
 fi
 
 #export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 70% --reverse --border --preview "head -100 {}" '
+#export FZF_DEFAULT_OPTS='--height 70% --reverse --border --preview "head -100 {}" '
 
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$ANDROID_HOME/platform-tools":$PATH
 export PATH="$HOME/flutter/bin":$PATH
 export PATH=$HOME/Documents/Projects/flutter/bin:$PATH
 
@@ -113,18 +116,10 @@ include $HOME/.zsh/functions.zsh
 # Load custom aliases
 include $HOME/.zsh/aliases.zsh
 
-include $HOME/.fzf.zsh
-
 # zsh hook to suggest to use alias instead of full command
 autoload -Uz add-zsh-hook
 add-zsh-hook -D preexec _custom_check_aliases
 add-zsh-hook preexec _custom_check_aliases
 
-theme refined
+# theme agnoster
 dedupe_path
-
-# personal messages
-echo "--Practice pacvim--\n"
-#doing
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

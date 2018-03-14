@@ -1,21 +1,23 @@
 [user]
-    name = Igor Tarasenko
-    email = tarasenko.igor.v@gmail.com
+    name = Leon Keijzer
+    email = l.keijzer@24coms.com
 [color]
     ui = true
     status = auto
 [diff]
-    tool = vimdiff
+    tool = diffmerge
     algorithm = patience
+[difftool "diffmerge"]
+   cmd = /Applications/Diffmerge.app/Contents/MacOS/diffmerge $LOCAL $REMOTE
 [core]
-    editor = /usr/local/bin/vim
-	autocrlf = input
+    editor = /usr/local/bin/nano
+    autocrlf = input
 [push]
     default = simple
 [merge]
     renamelimit = 2415
 [alias]
     s = status --short
-	update = !git pull && git submodule update --init --recursive
+   update = !git pull && git submodule update --init --recursive
 [credential]
 	helper = osxkeychain

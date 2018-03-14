@@ -8,9 +8,8 @@ path:
 	echo $(DOT_FOLDER)
 
 .PHONY: install
-install: zgen link
+install: zgen link slate brew
 	zsh ~/.zshrc
-	vim +PlugInstall! +qa
 
 .PHONY: macos
 macos:
@@ -23,13 +22,16 @@ zgen:
 
 .PHONY: link
 link:
-	ln -sfnv $(DOT_FOLDER)/vim ~/.vim
 	ln -sfnv $(DOT_FOLDER)/zsh ~/.zsh
 	ln -sfnv $(DOT_FOLDER)/dot/gitconfig ~/.gitconfig
-	ln -sfnv $(DOT_FOLDER)/dot/ideavimrc ~/.ideavimrc
-	ln -sfnv $(DOT_FOLDER)/dot/vimrc ~/.vimrc
 	ln -sfnv $(DOT_FOLDER)/dot/zshrc ~/.zshrc
-
+.PHONY: brew
+brew:
+	brew install brew-gem
+	brew bundle
+.PHONY: slate
+slate:
+	ln -sfnv $(DOT_FOLDER)/slate/.slate ~/.slate
 .PHONY: clean
 clean:
 	rm -rf ~/.zgen

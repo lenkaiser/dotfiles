@@ -49,13 +49,13 @@ alias o='open'
 #alias sf='fasd -sif'     # interactive file selection
 #alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 #alias zz='fasd_cd -d -i' # cd with interactive selection
-# alias v='f -t -e vim'
-alias v='v -l'
 alias ff='fzf'
-alias vv="vim ."
 alias fd='noglob fd'
 alias s='noglob s'
 alias git=hub
 alias swiftformat='swiftformat --indent 4 --indentcase true'
 alias bef='bundle exec fastlane'
 alias be='bundle exec'
+
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+

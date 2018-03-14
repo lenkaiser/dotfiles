@@ -4,7 +4,7 @@ source $HOME/.zgen/zgen.zsh
 function load-plugin-list() {
     echo "creating a zgen save"
 
-    ZSH_THEME=refined
+    ZSH_THEME=agnoster
     ZGEN_LOADED=()
     ZGEN_COMPLETIONS=()
 
@@ -64,7 +64,6 @@ function load-plugin-list() {
     zgen oh-my-zsh plugins/swiftpm
     zgen oh-my-zsh plugins/thefuck
     zgen oh-my-zsh plugins/themes
-    zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/web-search
     zgen oh-my-zsh plugins/xcode
     zgen oh-my-zsh plugins/zsh-navigation-tools
@@ -88,7 +87,7 @@ function load-plugin-list() {
     GENCOMPL_FPATH=$HOME/.zsh/complete
 
     # Add Fish-like autosuggestions to your ZSH
-    zgen load zsh-users/zsh-autosuggestions
+    # zgen load zsh-users/zsh-autosuggestions
 
     # Save it all to init script
     zgen save
