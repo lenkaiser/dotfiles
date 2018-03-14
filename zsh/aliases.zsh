@@ -22,7 +22,8 @@ alias top='htop'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias _='sudo'
-
+alias appcode="open -a AppCode.app"
+alias sublime="'/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl'"
 alias diffu="diff --unified"
 alias po='popd'
 alias pu='pushd'
@@ -56,6 +57,3 @@ alias git=hub
 alias swiftformat='swiftformat --indent 4 --indentcase true'
 alias bef='bundle exec fastlane'
 alias be='bundle exec'
-
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
-

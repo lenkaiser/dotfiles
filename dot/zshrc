@@ -114,12 +114,12 @@ autoload _custom_check_aliases _clean _update _movelink _commit
 include $HOME/.zsh/functions.zsh
 
 # Load custom aliases
-include $HOME/.zsh/aliases.zsh
+include ~/.zsh/aliases.zsh
 
 # zsh hook to suggest to use alias instead of full command
 autoload -Uz add-zsh-hook
 add-zsh-hook -D preexec _custom_check_aliases
 add-zsh-hook preexec _custom_check_aliases
 
-# theme agnoster
+theme agnoster
 dedupe_path
