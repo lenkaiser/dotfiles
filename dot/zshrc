@@ -106,6 +106,7 @@ fi
 
 export PATH="$HOME/flutter/bin":$PATH
 export PATH=$HOME/Documents/Projects/flutter/bin:$PATH
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin":$PATH
 
 fpath=(~/.zsh/funcs $fpath)
 autoload _custom_check_aliases _clean _update _movelink _commit
