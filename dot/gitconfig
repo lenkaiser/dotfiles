@@ -10,7 +10,7 @@
 [difftool "diffmerge"]
    cmd = /Applications/Diffmerge.app/Contents/MacOS/diffmerge $LOCAL $REMOTE
 [core]
-    editor = /usr/local/bin/nano
+    editor = /usr/bin/nano
     autocrlf = input
 	excludesfile = /Users/len/.gitignore_global
 [push]
