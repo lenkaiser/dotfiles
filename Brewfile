@@ -167,5 +167,6 @@ cask "paw"
 cask "slate"
 cask "sublime-text"
 cask "provisionql"
+cask "reveal"
 mas "Xcode", id: 497799835
 mas "Telegram", id: 747648890
